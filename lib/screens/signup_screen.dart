@@ -49,7 +49,7 @@ class _SignupScreenState extends State<SignupScreen> {
       email: _emailController.text,
       password: _passwordController.text,
       bio: _bioController.text,
-      file: _image!,
+      file: _image,
     );
     debugPrint(res);
 
@@ -141,29 +141,29 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(height: 24),
 
               // button signup
-              InkWell(
-                onTap: signUpUser,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
+              !_isLoading
+                  ? InkWell(
+                      onTap: signUpUser,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                          ),
+                          color: blueColor,
+                        ),
+                        child: const Text('Sign up'),
+                      ),
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
                       ),
                     ),
-                    color: blueColor,
-                  ),
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: primaryColor,
-                          ),
-                        )
-                      : const Text('Sign up'),
-                ),
-              ),
               const SizedBox(height: 12),
               Flexible(child: Container(), flex: 2),
 

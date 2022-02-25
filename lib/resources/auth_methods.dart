@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,14 +16,15 @@ class AuthMethods {
     required String email,
     required String password,
     required String bio,
-    required Uint8List file,
+    required Uint8List? file,
   }) async {
     String res = 'Some error occurred';
     try {
-      if (username.isNotEmpty ||
-          email.isNotEmpty ||
-          password.isNotEmpty ||
-          bio.isNotEmpty) {
+      if (username.isNotEmpty &&
+          email.isNotEmpty &&
+          password.isNotEmpty &&
+          bio.isNotEmpty &&
+          file != null) {
         // register user
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email,
@@ -45,8 +47,33 @@ class AuthMethods {
         });
         res = 'success';
       }
-    } catch (err) {
-      res = err.toString();
+    } on FirebaseAuthException catch (err) {
+      debugPrint(err.message.toString());
+      res = err.message.toString();
+    }
+    return res;
+  }
+
+  // logging in user
+  Future<String> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    String res = 'Some error occurred';
+
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        res = 'success';
+      } else {
+        res = 'Please enter all the fields';
+      }
+    } on FirebaseAuthException catch (err) {
+      debugPrint(err.message.toString());
+      res = err.message.toString();
     }
     return res;
   }
