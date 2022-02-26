@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_app/models/user_provider.dart';
+import 'package:instagram_app/providers/user_provider.dart';
 import 'package:instagram_app/responsive/mobile_screen_layout.dart';
 import 'package:instagram_app/responsive/responsive_layout_screen.dart';
 import 'package:instagram_app/responsive/web_screen_layout.dart';
