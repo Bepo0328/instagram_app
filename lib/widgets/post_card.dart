@@ -135,7 +135,7 @@ class _PostCardState extends State<PostCard> {
                   height: MediaQuery.of(context).size.height * 0.35,
                   width: double.infinity,
                   child: Image.network(
-                    widget.snap['photoUrl'],
+                    widget.snap['postUrl'],
                     fit: BoxFit.cover,
                   ),
                 ),

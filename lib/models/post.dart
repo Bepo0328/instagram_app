@@ -8,7 +8,7 @@ class Post {
   final DateTime datePulished;
   final String profileImage;
   final List likes;
-  final String photoUrl;
+  final String postUrl;
 
   Post({
     required this.username,
@@ -18,7 +18,7 @@ class Post {
     required this.datePulished,
     required this.profileImage,
     required this.likes,
-    required this.photoUrl,
+    required this.postUrl,
   });
 
   Map<String, dynamic> toJson() => {
@@ -29,7 +29,7 @@ class Post {
         'datePulished': datePulished,
         'profileImage': profileImage,
         'likes': likes,
-        'photoUrl': photoUrl,
+        'postUrl': postUrl,
       };
 
   static Post fromSnap(DocumentSnapshot snap) {
@@ -43,7 +43,7 @@ class Post {
       datePulished: snapshot['datePulished'],
       profileImage: snapshot['profileImage'],
       likes: snapshot['likes'],
-      photoUrl: snapshot['photoUrl'],
+      postUrl: snapshot['postUrl'],
     );
   }
 }

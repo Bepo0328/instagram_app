@@ -19,7 +19,7 @@ class FirestoreMethods {
   ) async {
     String res = 'Some error occurred';
     try {
-      String photoUrl =
+      String postUrl =
           await StorageMethods().uploadImageToStorage('posts', file, true);
 
       String postId = const Uuid().v1();
@@ -32,7 +32,7 @@ class FirestoreMethods {
         datePulished: DateTime.now(),
         profileImage: profileImage,
         likes: [],
-        photoUrl: photoUrl,
+        postUrl: postUrl,
       );
 
       _firestore.collection('posts').doc(postId).set(post.toJson());
