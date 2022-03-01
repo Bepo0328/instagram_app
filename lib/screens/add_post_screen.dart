@@ -158,7 +158,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     : const Padding(
                         padding: EdgeInsets.only(top: 0),
                       ),
-                const Divider(),
+                Divider(height: 0.5, color: Colors.grey[900]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,9 +193,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         ),
                       ),
                     ),
-                    const Divider(),
                   ],
                 ),
+                Divider(height: 0.5, color: Colors.grey[900]),
               ],
             ),
           );
